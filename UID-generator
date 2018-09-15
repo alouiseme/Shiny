@@ -1,23 +1,7 @@
-#Unique_id produces a 9 digit code by calling phone number, timestamp, and two letters - first and last name
-
-unique_id <- function(f, l, y, z){
-	
-	#where f is the column of FIRST NAME
-		f %>% str_replace(" ", "") %>% toupper() %>% str_sub(1, 2)
-	#where l is LAST NAME
-		l %>% str_replace(" ", "") %>% toupper() %>% str_sub(1, 2)
-	#Where y is TIMESTAMP
-		y %>% paste0() %>% str_extract("[:digit:][:digit:]-[:digit:][:digit:]") %>% str_replace_all("-", "")
-		#Where z is phone number formatted NNN-NNN-NNNN
-		z %>% str_extract("-[:digit:][:digit:][:digit:]-") %>% str_replace_all("-", "")
-			
-		UID <-	c(f, l , y, z)
-		
-		UID <- str_replace("-", "")
-		
-		return(UID)
-}
-
-#Calling on df
-
-df %>% mutate(unique_id(f = df$FirstName, l = df$LastName, y = df$Timestamp, z = df$Phone))
+DF %>% mutate(UID = paste0(toupper(substr(FirstName, 1, 1)),
+                          toupper(substr(LastName, 1, 1)),
+                          substr(Timestamp, 6, 7),
+                          substr(Timestamp, 9, 10), 
+                          substr(Phone, 5, 7)))
+			  
+#Where columns are First Name, Last Name, Timestamp and Phone Number			  

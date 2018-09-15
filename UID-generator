@@ -1,4 +1,4 @@
-DF %>% mutate(UID = paste0(toupper(substr(FirstName, 1, 1)),
+df %>% mutate(UID = paste0(toupper(substr(FirstName, 1, 1)),
                           toupper(substr(LastName, 1, 1)),
                           substr(Timestamp, 6, 7),
                           substr(Timestamp, 9, 10), 

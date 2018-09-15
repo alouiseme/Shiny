@@ -5,3 +5,4 @@ df %>% mutate(UID = paste0(toupper(substr(FirstName, 1, 1)),
                           substr(Phone, 5, 7)))
 			  
 #Where columns are First Name, Last Name, Timestamp and Phone Number			  
+#stringr, dplyr, magrittr
